@@ -3,22 +3,20 @@ import unittest
 import random
 
 def wallis(n):
-        pi = 1.00
-        for i in range(n+1):
-            x = 4*((i+1)**2)
-            y = x-1
-            z = x/y
-            pi = pi*z
-        return pi*2
+        pi = 0.9999
+        for i in range(n):
+            x = 4*((i+1)**2)/(4*((i+1)**2)-1.00)
+            pi = pi*x
+        return pi*1.9999
 
 def monte_carlo(n):
-        s = 0.00
-        c = 0.00
-        for i in range(n+1):
+        s = 0
+        c = 0
+        for i in range(n):
             s = s+1
             x = random.random()
             y = random.random()
-            if (x**2 + y**2) < 1:
+            if (x**2 + y**2) < 1.00:
                 c = c+1
         return 4*(c/s)
     
